@@ -1,0 +1,60 @@
+# Make some possibly destructive commands more interactive.
+alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -i'
+alias cpr='cp -i -r'
+
+# Add some easy shortcuts for formatted directory listings and add a touch of color.
+alias lS='ls -lhFSr --color=auto'
+alias lSm='ls -lhFSr --color=auto | more'
+alias la='ls -AhlF --color=auto'
+alias lam='ls -AhlF --color=auto | more'
+alias lh='ls -Ahld --color=auto .?*'
+alias lhm='ls -Ahld --color=auto .?* | more'
+alias ll='ls -lhF --color=auto'
+alias llm='ls -lhF --color=auto | more'
+alias ls='ls -CF --color=auto'
+alias lsm='ls -CF --color=auto | more'
+alias lt='ls -lhFtr --color=auto'
+alias ltm='ls -lhFtr --color=auto | more'
+
+# Stuff what works only in zsh (global aliases)
+if [ -n "$ZSH_VERSION" ]; then
+ alias -g H='| head'
+ alias -g T='| tail'
+ alias -g G='| grep'
+ alias -g L="| less"
+ alias -g LL="2>&1 | less"
+ alias -g CA="2>&1 | cat -A"
+ alias -g NE="2> /dev/null"
+ alias -g NUL="> /dev/null 2>&1"
+fi
+
+# Copy & Paste
+alias c="tr -d '\n' | xclip -selection p"
+alias cc="xclip -selection c"
+alias p="xclip -o -selection p"
+alias pp="xclip -o -selection c"
+
+# Nice Stuff
+alias ..='cd ..'
+alias ...='cd ../..'
+
+alias root="sudo -i"
+
+alias path='echo -e ${PATH//:/\\n}'
+alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
+
+alias fd='find . -type d -name'
+alias ff='find . -type f -name'
+
+
+# Ugly Stuff
+alias cssh="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
+alias cscp="scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
+
+# Usage:
+# echo "Hello Alert!" | alert
+# echo "Hello Alert!" ; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+

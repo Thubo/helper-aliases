@@ -1,0 +1,7 @@
+# tmux
+alias tmux='tmux -2 -u'
+alias ta='tmux -2 -u attach -t'
+alias tk='tmux -2 -u kill-session -t'
+alias tl='tmux -2 -u list-sessions'
+alias tm='tmux -2 -u new-session -A -s $USER'
+alias ts='tmux -2 -u new-session -s'
