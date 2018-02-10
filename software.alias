@@ -2,7 +2,6 @@
 alias enw='emacs -nw'
 alias g='git'
 alias mrj='mr -m -j10'
-alias v='vagrant'
 alias vi='vim'
 alias view='vim -R'
 alias myscreen='screen -RR $USER'
