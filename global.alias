@@ -4,13 +4,16 @@ alias mv='mv -i'
 alias cp='cp -i'
 alias cpr='cp -i -r'
 
-if [[ $(uname) -eq "Darwin" ]]; then
- export CLICOLOR="1"
- # export LSCOLORS=ExFxCxDxBxegedabagacad
- # export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx # for black BG
- export LSCOLOR="-G"
+if ls --color -d . >/dev/null 2>&1; then
+  ## GNU
+  LSCOLOR="--color=auto"
+elif ls -G -d . >/dev/null 2>&1; then
+  ## BSD/Darwin
+  CLICOLOR="1"
+  LSCOLOR="-G"
 else
- LSCOLOR="--color=auto"
+  ## Solaris
+  SOLARIS_LS=1
 fi
 
 # Add some easy shortcuts for formatted directory listings and add a touch of color.
