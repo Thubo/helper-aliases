@@ -1,5 +1,11 @@
 # Make grep more user friendly by highlighting matches
 # and exclude grepping through .svn folders.
-alias grep='grep --color=auto --exclude-dir=\.svn --exclude-dir=\.git'
-alias fgrep='fgrep --color=auto --exclude-dir=\.svn --exclude-dir=\.git'
-alias egrep='egrep --color=auto --exclude-dir=\.svn --exclude-dir=\.git'
+if grep --color "a" <<< "a" &> /dev/null; then
+  alias grep='grep --color=auto --exclude-dir=\.svn --exclude-dir=\.git'
+  alias fgrep='fgrep --color=auto --exclude-dir=\.svn --exclude-dir=\.git'
+  alias egrep='egrep --color=auto --exclude-dir=\.svn --exclude-dir=\.git'
+else
+  alias grep='grep --exclude-dir=\.svn --exclude-dir=\.git'
+  alias fgrep='fgrep --exclude-dir=\.svn --exclude-dir=\.git'
+  alias egrep='egrep --exclude-dir=\.svn --exclude-dir=\.git'
+fi
